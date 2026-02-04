@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - Registration Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        header {
+            background: #4a6fa5;
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-weight: 600;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .form-container {
+            padding: 30px;
+        }
+        
+        .form-section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        h2 {
+            color: #4a6fa5;
+            margin-bottom: 20px;
+            font-size: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -10px 15px;
+        }
+        
+        .form-group {
+            flex: 1 0 300px;
+            padding: 0 10px;
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        label.required::after {
+            content: " *";
+            color: #e22;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 14px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #4a6fa5;
+            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.2);
+        }
+        
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 5px;
+        }
+        
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-option input, .checkbox-option input {
+            margin-right: 8px;
+        }
+        
+        .income-slider {
+            margin-top: 10px;
+        }
+        
+        .slider-value {
+            text-align: center;
+            font-weight: 600;
+            color: #4a6fa5;
+            margin-top: 5px;
+        }
+        
+        .file-upload {
+            position: relative;
+            margin-top: 5px;
+        }
+        
+        .file-upload input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .file-upload-button {
+            display: inline-block;
+            padding: 14px 20px;
+            background: #f0f0f0;
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+            color: #666;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .file-upload-button:hover {
+            background: #e0e0e0;
+            border-color: #4a6fa5;
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: #4a6fa5;
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .submit-btn:hover {
+            background: #3a5a8a;
+        }
+        
+        .password-field {
+            position: relative;
+        }
+        
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #777;
+        }
+        
+        @media (max-width: 600px) {
+            .form-group {
+                flex: 1 0 100%;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+            
+            header {
+                padding: 20px;
+            }
+            
+            .radio-group, .checkbox-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Create Account</h1>
+
+        </header>
+        
+        <div class="form-container">
+            <form id="registrationForm">
+                <div class="form-section">
+                    
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName" class="required">First name</label>
+                            <input type="text" id="firstName" placeholder="Enter your first name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="lastName">Last name</label>
+                            <input type="text" id="lastName" placeholder="Enter your last name">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="required">Email</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group password-field">
+                            <label for="password" class="required">Password</label>
+                            <input type="password" id="password" placeholder="Enter your password" required>
+                            <span class="toggle-password" id="togglePassword">
+                                <i class="far fa-eye"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="form-group password-field">
+                            <label for="confirmPassword" class="required">Confirm Password</label>
+                            <input type="password" id="confirmPassword" placeholder="Enter your password again" required>
+                            <span class="toggle-password" id="toggleConfirmPassword">
+                                <i class="far fa-eye"></i>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Gender:</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="male" name="gender" value="male">
+                                <label for="male">Male</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="female" name="gender" value="female">
+                                <label for="female">Female</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="other" name="gender" value="other">
+                                <label for="other">Other</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Hobbies:</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="music" name="hobbies" value="music">
+                                <label for="music">Music</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="sports" name="hobbies" value="sports">
+                                <label for="sports">Sports</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="travel" name="hobbies" value="travel">
+                                <label for="travel">Travel</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="movies" name="hobbies" value="movies">
+                                <label for="movies">Movies</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                   
+                    
+                    <div class="form-group">
+                        <label for="incomeSource">Source of Income</label>
+                        <select id="incomeSource">
+                            <option value="employed">Employed</option>
+                            <option value="self-employed">Self-Employed</option>
+                            <option value="student">Student</option>
+                            <option value="retired">Retired</option>
+                            <option value="unemployed">Unemployed</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="income">Income (in thousands)</label>
+                        <input type="range" id="income" min="0" max="100" value="20" class="income-slider">
+                        <div class="slider-value"><span id="incomeValue">20</span>K</div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    
+                    
+                    <div class="form-group">
+                        <label for="profilePicture">Upload Profile Picture</label>
+                        <div class="file-upload">
+                            <div class="file-upload-button">
+                                <i class="fas fa-upload"></i> Choose File
+                            </div>
+                            <input type="file" id="profilePicture" accept="image/*">
+                        </div>
+                        <div id="fileName">No file chosen</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" min="18" max="100" value="18">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bio">Bio</label>
+                        <textarea id="bio" placeholder="Tell us about yourself"></textarea>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        
+        const incomeSlider = document.getElementById('income');
+        const incomeValue = document.getElementById('incomeValue');
+        
+        incomeSlider.addEventListener('input', function() {
+            incomeValue.textContent = this.value;
+        });
+        
+        
+        const fileInput = document.getElementById('profilePicture');
+        const fileName = document.getElementById('fileName');
+        
+        fileInput.addEventListener('change', function() {
+            if (this.files.length > 0) {
+                fileName.textContent = this.files[0].name;
+            } else {
+                fileName.textContent = 'No file chosen';
+            }
+        });
+        
+        
+        const togglePassword = document.getElementById('togglePassword');
+        const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+        const passwordField = document.getElementById('password');
+        const confirmPasswordField = document.getElementById('confirmPassword');
+        
+        togglePassword.addEventListener('click', function() {
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+            this.querySelector('i').classList.toggle('fa-eye');
+            this.querySelector('i').classList.toggle('fa-eye-slash');
+        });
+        
+        toggleConfirmPassword.addEventListener('click', function() {
+            const type = confirmPasswordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            confirmPasswordField.setAttribute('type', type);
+            this.querySelector('i').classList.toggle('fa-eye');
+            this.querySelector('i').classList.toggle('fa-eye-slash');
+        });
+        
+        
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            alert('Account created successfully!');
+            this.reset();
+            incomeValue.textContent = '20';
+            fileName.textContent = 'No file chosen';
+        });
+    </script>
+</body>
+</html>

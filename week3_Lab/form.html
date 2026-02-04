@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simple Registration Form</title>
+  <style>
+    :root {
+      --gap: 12px;
+      --radius: 14px;
+    }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #f6f7fb;
+      margin: 0;
+      padding: 32px;
+      color: #1f2937;
+    }
+    .card {
+      max-width: 560px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+      padding: 28px;
+    }
+    h1 {
+      margin: 0 0 18px;
+      font-size: 1.4rem;
+    }
+    form {
+      display: grid;
+      gap: var(--gap);
+    }
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap);
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    input[type="text"],
+    input[type="email"],
+    select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      outline: none;
+      font-size: 0.95rem;
+    }
+    input:focus, select:focus {
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99,102,241,.15);
+    }
+    fieldset {
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 10px 14px 12px;
+    }
+    legend { 
+      padding: 0 6px; 
+      font-weight: 600; 
+    }
+    .gender {
+      display: flex; 
+      gap: 18px; 
+      align-items: center;
+      padding: 6px 2px;
+    }
+    .actions { 
+      display: flex; 
+      gap: var(--gap); 
+      margin-top: 6px; 
+    }
+    button {
+      padding: 12px 16px;
+      border: 0;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .primary { background: #6366f1; color: #fff; }
+    .ghost { background: #eef2ff; color: #3730a3; }
+
+    @media (max-width: 560px) {
+      .row { grid-template-columns: 1fr; }
+      body { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Registration Form</h1>
+    <form action="#" method="post" novalidate>
+      <div class="row">
+        <div>
+          <label for="firstName">First name</label>
+          <input id="firstName" name="first_name" type="text" placeholder="e.g., Sopha" required />
+        </div>
+        <div>
+          <label for="lastName">Last name</label>
+          <input id="lastName" name="last_name" type="text" placeholder="e.g., Sok" required />
+        </div>
+      </div>
+
+      <div>
+        <label for="city">City</label>
+        <input id="city" name="city" type="text" placeholder="e.g., Phnom Penh" required />
+      </div>
+
+      <div>
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" placeholder="name@example.com" required />
+      </div>
+
+      <fieldset>
+        <legend>Gender</legend>
+        <div class="gender" role="radiogroup" aria-labelledby="gender-label">
+          <label><input type="radio" name="gender" value="female" required /> Female</label>
+          <label><input type="radio" name="gender" value="male" /> Male</label>
+        </div>
+      </fieldset>
+
+      <div class="actions">
+        <button class="primary" type="submit">Submit</button>
+        <button class="ghost" type="reset">Reset</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Optional: Demo-only client-side handling to show form data instead of navigating
+    document.querySelector('form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(this).entries());
+      alert('Submitted!\n' + JSON.stringify(data, null, 2));
+    });
+  </script>
+</body>
+</html>

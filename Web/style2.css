@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    min-height: 100vh;
+    background: darkcyan;
+
+}
+.wrab{
+    width: 750px;
+    background: seagreen;
+    border-radius: 10px;
+    color: antiquewhite;
+
+
+}
+.wrab h1{
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+.wrab .input_box{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background: chartreuse;
+
+    
+}

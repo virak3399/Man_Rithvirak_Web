@@ -1,0 +1,26 @@
+.Container {
+    display: flex;
+    flex-direction: column;
+   
+    }
+    .Responsive-Header,.Footer {
+        flex: 1;
+        background-color: #211c1c;
+        color: aliceblue; 
+        text-align: center;
+        padding: 10px;
+        
+    }
+    .sub-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+        padding: 20px;
+       
+    }
+    .Main-content,.Sidebar {
+        background-color: #e69090;
+        padding: 20px;
+
+    }
+ 
